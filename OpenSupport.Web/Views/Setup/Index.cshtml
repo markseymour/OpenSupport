@@ -1,0 +1,64 @@
+﻿@model OpenSupport.Web.ViewModels.SetupViewModel
+
+@{
+    Layout = "~/Views/Shared/_SetupLayout.cshtml";
+}
+
+<div id="SetupContent">
+    
+    <h1>Setup</h1>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(x => x.Configuration.SiteName, "Site Name")
+            @Html.TextBoxFor(x => x.Configuration.SiteName)
+        </div>
+
+        <div>
+            @Html.LabelFor(x => x.Configuration.ConnectionString, "Connection String")
+            @Html.TextBoxFor(x => x.Configuration.ConnectionString)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.Configuration.AdminUser.UserName, "Admin Username")
+            @Html.TextBoxFor(x => x.Configuration.AdminUser.UserName, new { @Value = "Admin", disabled = "disabled" })
+        </div>
+        <div>
+            @Html.LabelFor(x => x.Configuration.AdminUser.Password, "Admin Password")
+            @Html.PasswordFor(x => x.Configuration.AdminUser.Password)
+        </div>
+        <input type="submit" value="Create Site"/>
+    }
+    
+</div>
+
+
+@section scripts {
+    <script type="text/javascript">
+
+        var setup = $("#SetupContent");
+
+        $(function() {
+            SetSetupPosition();
+        });
+
+        $(document).ready(function() {
+            setup.fadeIn();
+            setup.animate({ "height": "+=250px", "margin-top": "-=125px" }, 500, "swing", function() {
+                setup.css("padding", "10px");
+                setup.find("form, h1").fadeIn("fast");
+            });
+        });
+
+        $(window).resize(SetSetupPosition());
+
+        function GetSetupPosition() {
+            return ($(document).height() / 2);
+        }
+
+        function SetSetupPosition() {
+            setup.css({ "margin-top": GetSetupPosition() });
+        }
+
+    </script>
+}
