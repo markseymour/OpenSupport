@@ -1,4 +1,5 @@
 ﻿using OpenSupport.Core.Models;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Script.Serialization;
@@ -8,6 +9,7 @@ namespace OpenSupport.Core.Services
     public static class SiteManager
     {
         private const string SettingsFileName = "Settings.txt";
+        private static IEnumerable<SiteSettingsRecord> _allSites;
 
         static SiteManager()
         {
@@ -27,19 +29,28 @@ namespace OpenSupport.Core.Services
             File.WriteAllText(file, content);
         }
 
-        public static SiteSettingsRecord LoadSite()
+        public static SiteSettingsRecord LoadSite(string site = "Default")
+        {
+            return GetAllSites()
+                .Where(x => x.SiteName.ToLowerInvariant() == site.ToLowerInvariant())
+                .SingleOrDefault();
+        }
+
+        public static IEnumerable<SiteSettingsRecord> GetAllSites()
         {
             var serializer = new JavaScriptSerializer();
 
-            var path = Path.Combine(FileManager.SiteDirectory.FullName, SettingsFileName);
-            if (File.Exists(path))
+            foreach (var site in FileManager.SiteDirectory.GetDirectories())
             {
+                var path = Path.Combine(site.FullName, SettingsFileName);
+                if (!File.Exists(path))
+                    continue;
+
                 var fileContent = File.ReadAllText(path);
                 var config = serializer.Deserialize(fileContent, typeof(SiteSettingsRecord));
-                return config as SiteSettingsRecord;
+                yield return (config as SiteSettingsRecord);
             }
 
-            return null;
         }
 
         public static bool IsSiteSetup()

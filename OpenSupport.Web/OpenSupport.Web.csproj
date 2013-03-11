@@ -259,6 +259,10 @@
       <Project>{699cee9c-391a-4532-a340-293a494b8d0f}</Project>
       <Name>OpenSupport.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenSupport.DataAccess\OpenSupport.DataAccess.csproj">
+      <Project>{edda5462-0740-47ba-a58b-2ffd1ef71251}</Project>
+      <Name>OpenSupport.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenSupport.Setup\OpenSupport.Setup.csproj">
       <Project>{061cb4b6-b7de-43ad-a14c-246fc96013d1}</Project>
       <Name>OpenSupport.Setup</Name>
@@ -280,7 +284,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>52724</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:64986/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

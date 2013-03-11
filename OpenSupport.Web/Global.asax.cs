@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using OpenSupport.Core.Models;
+using System.Data.Entity;
+using OpenSupport.DataAccess;
 
 namespace OpenSupport.Web
 {
@@ -16,6 +18,7 @@ namespace OpenSupport.Web
     {
         protected void Application_Start()
         {
+            Database.DefaultConnectionFactory = new OSConnectionFactory();
             AutofacSetup();
 
             AreaRegistration.RegisterAllAreas();

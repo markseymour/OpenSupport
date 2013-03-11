@@ -12,7 +12,7 @@
     {
         <div>
             @Html.LabelFor(x => x.Configuration.SiteName, "Site Name")
-            @Html.TextBoxFor(x => x.Configuration.SiteName)
+            @Html.TextBoxFor(x => x.Configuration.SiteName, new { @Value = "Default", @readonly = "readonly" })
         </div>
 
         <div>
@@ -21,7 +21,7 @@
         </div>
         <div>
             @Html.LabelFor(x => x.Configuration.AdminUser.UserName, "Admin Username")
-            @Html.TextBoxFor(x => x.Configuration.AdminUser.UserName, new { @Value = "Admin", disabled = "disabled" })
+            @Html.TextBoxFor(x => x.Configuration.AdminUser.UserName, new { @Value = "Admin", @readonly = "readonly" })
         </div>
         <div>
             @Html.LabelFor(x => x.Configuration.AdminUser.Password, "Admin Password")

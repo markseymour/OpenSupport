@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using OpenSupport.Web.Models;
+using OpenSupport.DataAccess;
 
 namespace OpenSupport.Web.Filters
 {
