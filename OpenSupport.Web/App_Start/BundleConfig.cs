@@ -16,6 +16,7 @@ namespace OpenSupport.Web
 
             bundles.Add(GetLessBundle());
             bundles.Add(GetSetupBundle());
+            bundles.Add(GetLoginBundle());
         }
 
         public static Bundle GetLessBundle()
@@ -32,6 +33,14 @@ namespace OpenSupport.Web
             setupBundle.Transforms.Add(new LessTransformer());
 
             return setupBundle;
+        }
+
+        public static Bundle GetLoginBundle()
+        {
+            var loginBundle = new Bundle("~/Styles/AdHocStyles/authentication").IncludeDirectory("~/Styles/AdHocStyles", "Authentication.less");
+            loginBundle.Transforms.Add(new LessTransformer());
+
+            return loginBundle;
         }
     }
 }

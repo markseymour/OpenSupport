@@ -1,0 +1,76 @@
+﻿#MainContentContainer {
+	background: none !important;
+	box-shadow: none !important;
+	border: none !important;
+}
+
+#AuthenticationForm {
+background: rgb(255,255,255);
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+
+	padding: 10px;
+	box-sizing: border-box;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	border: 1px solid #ccc;
+	margin: 50px auto 0 auto;
+	box-shadow: 0 1px 10px 0px #C5C4C4;
+
+	h1 {
+		font-size: 18px;
+	}
+
+	fieldset {
+		width: 600px;
+		margin: 0 auto 0 auto;
+	}
+	ol {
+		margin-bottom: 10px;
+		li {
+			width: 500px;
+			margin-bottom: 5px;
+			input[type=text], input[type=password] {	
+				width: 275px;
+			}
+			label {
+			color: #ADADAD;
+				display: inline-block;
+				width: 150px;
+				text-align: right;
+			}
+			&#RememberMe {
+				text-align: center;
+				width: 580px;	
+				margin: 10px 0 15px 0;
+				label {
+					width: auto;
+				}
+			}
+		}
+	}
+
+	input[type=submit] {
+		position: relative;
+		left: 50%;
+		margin-left: -65px;
+	}
+
+	p { float: right; }
+
+	.validation-summary-errors {
+		text-align: center;
+		color: #F36F6F;
+		li {
+			width: auto;
+			margin-right: 25px;
+		}
+		margin-bottom: 10px;
+	}
+}

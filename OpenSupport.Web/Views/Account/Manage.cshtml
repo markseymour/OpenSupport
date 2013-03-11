@@ -1,25 +1,18 @@
 ﻿@model OpenSupport.Core.Models.LocalPasswordModel
-@{
-    ViewBag.Title = "Manage Account";
-}
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
+@Styles.Render("~/Styles/AdHocStyles/authentication")
 
-<p class="message-success">@ViewBag.StatusMessage</p>
+<div id="AuthenticationForm">
+    <p class="message-success">@ViewBag.StatusMessage</p>
 
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+    <p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
 
-@if (ViewBag.HasLocalPassword)
-{
-    @Html.Partial("_ChangePasswordPartial")
-}
-else
-{ 
-    @Html.Partial("_SetPasswordPartial")
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @if (ViewBag.HasLocalPassword)
+    {
+        @Html.Partial("_ChangePasswordPartial")
+    }
+    else
+    { 
+        @Html.Partial("_SetPasswordPartial")
+    }
+</div>

@@ -242,6 +242,7 @@
     <Content Include="Views\Setup\Index.cshtml" />
     <Content Include="Views\Shared\_SetupLayout.cshtml" />
     <Content Include="Styles\AdHocStyles\Setup.less" />
+    <Content Include="Styles\AdHocStyles\Authentication.less" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
