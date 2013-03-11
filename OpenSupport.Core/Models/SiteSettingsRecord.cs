@@ -9,6 +9,7 @@ namespace OpenSupport.Core.Models
     {
         public string ConnectionString { get; set; }
         public string SiteName { get; set; }
-        public UserRecord AdminUser { get; set; }
+        public string AdminUserName { get; set; }
+        public string AdminPassword { get; set; }
     }
 }

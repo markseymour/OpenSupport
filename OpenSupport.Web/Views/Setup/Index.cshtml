@@ -10,6 +10,7 @@
 
     @using (Html.BeginForm())
     {
+        <div id="__FormValidation">@Html.ValidationMessage("__FormValidation")</div>
         <div>
             @Html.LabelFor(x => x.Configuration.SiteName, "Site Name")
             @Html.TextBoxFor(x => x.Configuration.SiteName, new { @Value = "Default", @readonly = "readonly" })
@@ -20,12 +21,12 @@
             @Html.TextBoxFor(x => x.Configuration.ConnectionString)
         </div>
         <div>
-            @Html.LabelFor(x => x.Configuration.AdminUser.UserName, "Admin Username")
-            @Html.TextBoxFor(x => x.Configuration.AdminUser.UserName, new { @Value = "Admin", @readonly = "readonly" })
+            @Html.LabelFor(x => x.Configuration.AdminUserName, "Admin Username")
+            @Html.TextBoxFor(x => x.Configuration.AdminUserName, new { @Value = "Admin", @readonly = "readonly" })
         </div>
         <div>
-            @Html.LabelFor(x => x.Configuration.AdminUser.Password, "Admin Password")
-            @Html.PasswordFor(x => x.Configuration.AdminUser.Password)
+            @Html.LabelFor(x => x.Configuration.AdminPassword, "Admin Password")
+            @Html.PasswordFor(x => x.Configuration.AdminPassword)
         </div>
         <input type="submit" value="Create Site"/>
     }

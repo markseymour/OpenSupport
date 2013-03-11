@@ -3,6 +3,7 @@ using OpenSupport.Core.Services;
 using OpenSupport.Web.ViewModels;
 using WebMatrix.WebData;
 using OpenSupport.DataAccess;
+using System;
 
 namespace OpenSupport.Web.Controllers
 {
@@ -19,10 +20,24 @@ namespace OpenSupport.Web.Controllers
         [HttpPost]
         public ActionResult Index(SetupViewModel model)
         {
-            SiteManager.SaveSite(model.Configuration);
+            try
+            {
+                WebSecurity.InitializeDatabaseConnection(model.Configuration.ConnectionString, "System.Data.SqlClient", "UserProfile", "UserId", "UserName", true);
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("__FormValidation", "Failed to inialize database, check connection string");
+            }
 
-            //WebSecurity.CreateAccount(model.Configuration.AdminUser.UserName, model.Configuration.AdminUser.Password);
-            //WebSecurity.Login(model.Configuration.AdminUser.UserName, model.Configuration.AdminUser.Password);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            WebSecurity.CreateUserAndAccount(model.Configuration.AdminUserName, model.Configuration.AdminPassword);
+            WebSecurity.Login(model.Configuration.AdminUserName, model.Configuration.AdminPassword);
+
+            SiteManager.SaveSite(model.Configuration);
 
             return RedirectToAction("Index", "Home");
         }

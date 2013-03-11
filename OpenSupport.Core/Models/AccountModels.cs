@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Web.Security;
 using OpenSupport.Core.Services;
 
-namespace OpenSupport.Web.Models
+namespace OpenSupport.Core.Models
 {
     public class UsersContext : DbContext
     {

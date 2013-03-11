@@ -5,7 +5,7 @@ using System.Threading;
 using System.Web.Mvc;
 using OpenSupport.Core.Services;
 using WebMatrix.WebData;
-using OpenSupport.Web.Models;
+using OpenSupport.Core.Models;
 using OpenSupport.DataAccess;
 
 namespace OpenSupport.Web.Filters
@@ -39,9 +39,8 @@ namespace OpenSupport.Web.Filters
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }
-                    var connectionString = String.Format("{0} {1}", SiteManager.LoadSite().ConnectionString, "providerName='System.Data.SqlClient'");
 
-                    WebSecurity.InitializeDatabaseConnection(connectionString, "UserProfile", "UserId", "UserName", true);
+                    WebSecurity.InitializeDatabaseConnection(SiteManager.CurrentSite().ConnectionString, "System.Data.SqlClient", "UserProfile", "UserId", "UserName", true);
                 }
                 catch (Exception ex)
                 {

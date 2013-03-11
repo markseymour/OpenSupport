@@ -18,6 +18,11 @@ namespace OpenSupport.Core.Services
             directory.Create();
         }
 
+        public static SiteSettingsRecord CurrentSite()
+        {
+            return LoadSite();
+        }
+
         public static void SaveSite(SiteSettingsRecord settings)
         {
             var name = settings.SiteName ?? "Default";

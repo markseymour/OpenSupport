@@ -1,0 +1,1 @@
+Server=(local);Database=OpenSupport;User Id=dbuser; Password=password;
