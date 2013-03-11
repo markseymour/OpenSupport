@@ -40,7 +40,8 @@ namespace OpenSupport.Web.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection(SiteManager.CurrentSite().ConnectionString, "System.Data.SqlClient", "UserProfile", "UserId", "UserName", true);
+                    if(!WebSecurity.Initialized)
+                        WebSecurity.InitializeDatabaseConnection(SiteManager.CurrentSite().ConnectionString, "System.Data.SqlClient", "UserProfile", "UserId", "UserName", true);
                 }
                 catch (Exception ex)
                 {

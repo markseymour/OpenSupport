@@ -26,7 +26,7 @@ namespace OpenSupport.Web.Controllers
             }
             catch (Exception e)
             {
-                ModelState.AddModelError("__FormValidation", "Failed to inialize database, check connection string");
+                ModelState.AddModelError("__FormValidation", "Failed to initialize database, check connection string");
             }
 
             if (!ModelState.IsValid)
