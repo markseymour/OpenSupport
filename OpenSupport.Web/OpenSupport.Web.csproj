@@ -243,10 +243,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Styles\Reset.less" />
-    <Content Include="Styles\Setup.less" />
     <Content Include="Styles\Site.less" />
     <Content Include="Views\Setup\Index.cshtml" />
     <Content Include="Views\Shared\_SetupLayout.cshtml" />
+    <Content Include="Styles\AdHocStyles\Setup.less" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,6 +15,7 @@ namespace OpenSupport.Web
                 "~/Scripts/modernizr-*"));
 
             bundles.Add(GetLessBundle());
+            bundles.Add(GetSetupBundle());
         }
 
         public static Bundle GetLessBundle()
@@ -23,6 +24,14 @@ namespace OpenSupport.Web
             lessBundle.Transforms.Add(new LessTransformer());
 
             return lessBundle;
+        }
+
+        public static Bundle GetSetupBundle()
+        {
+            var setupBundle = new Bundle("~/Styles/AdHocStyles/setup").IncludeDirectory("~/Styles/AdHocStyles", "Setup.less");
+            setupBundle.Transforms.Add(new LessTransformer());
+
+            return setupBundle;
         }
     }
 }

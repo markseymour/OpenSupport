@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
+using OpenSupport.Core.Services;
 using WebMatrix.WebData;
 using OpenSupport.Web.Models;
 using OpenSupport.DataAccess;
@@ -38,8 +39,9 @@ namespace OpenSupport.Web.Filters
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }
+                    var connectionString = String.Format("{0} {1}", SiteManager.LoadSite().ConnectionString, "providerName='System.Data.SqlClient'");
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection(connectionString, "UserProfile", "UserId", "UserName", true);
                 }
                 catch (Exception ex)
                 {

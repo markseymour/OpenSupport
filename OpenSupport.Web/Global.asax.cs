@@ -19,6 +19,7 @@ namespace OpenSupport.Web
         protected void Application_Start()
         {
             Database.DefaultConnectionFactory = new OSConnectionFactory();
+
             AutofacSetup();
 
             AreaRegistration.RegisterAllAreas();
