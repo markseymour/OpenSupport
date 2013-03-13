@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EDDA5462-0740-47BA-A58B-2FFD1EF71251}</ProjectGuid>
+    <ProjectGuid>{415F01D9-E54E-4D05-BA3E-BD5880093480}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenSupport.DataAccess</RootNamespace>
-    <AssemblyName>OpenSupport.DataAccess</AssemblyName>
+    <RootNamespace>OpenSupport.Dashboard</RootNamespace>
+    <AssemblyName>OpenSupport.Dashboard</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,35 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.0.1\lib\net40\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Configuration">
-      <HintPath>..\packages\Autofac.3.0.1\lib\net40\Autofac.Configuration.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Activities" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="Services\ISupportServices.cs" />
+    <Compile Include="Services\SupportServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenSupport.Core\OpenSupport.Core.csproj">
-      <Project>{699cee9c-391a-4532-a340-293a494b8d0f}</Project>
+      <Project>{699CEE9C-391A-4532-A340-293A494B8D0F}</Project>
       <Name>OpenSupport.Core</Name>
     </ProjectReference>
   </ItemGroup>

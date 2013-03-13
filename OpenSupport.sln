@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSupport.Core", "OpenSup
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSupport.DataAccess", "OpenSupport.DataAccess\OpenSupport.DataAccess.csproj", "{EDDA5462-0740-47BA-A58B-2FFD1EF71251}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSupport.Dashboard", "OpenSupport.Dashboard\OpenSupport.Dashboard.csproj", "{415F01D9-E54E-4D05-BA3E-BD5880093480}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{EDDA5462-0740-47BA-A58B-2FFD1EF71251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDDA5462-0740-47BA-A58B-2FFD1EF71251}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDDA5462-0740-47BA-A58B-2FFD1EF71251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{415F01D9-E54E-4D05-BA3E-BD5880093480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{415F01D9-E54E-4D05-BA3E-BD5880093480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{415F01D9-E54E-4D05-BA3E-BD5880093480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{415F01D9-E54E-4D05-BA3E-BD5880093480}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
