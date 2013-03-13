@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OpenSupport.Core.Models
+namespace OpenSupport.Models.Entities
 {
     public class QuestionRecord : IEntity
     {

@@ -181,6 +181,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Global.asax.cs">
@@ -253,6 +254,10 @@
     <ProjectReference Include="..\OpenSupport.DataAccess\OpenSupport.DataAccess.csproj">
       <Project>{edda5462-0740-47ba-a58b-2ffd1ef71251}</Project>
       <Name>OpenSupport.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenSupport.Models\OpenSupport.Models.csproj">
+      <Project>{8DABD889-FB12-46B6-8C01-9B93EEFEFAFE}</Project>
+      <Name>OpenSupport.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenSupport.Setup\OpenSupport.Setup.csproj">
       <Project>{061cb4b6-b7de-43ad-a14c-246fc96013d1}</Project>

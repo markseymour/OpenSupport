@@ -7,6 +7,7 @@ using FluentNHibernate.Automapping;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Instances;
 using OpenSupport.Core.Models;
+using OpenSupport.Models;
 
 namespace OpenSupport.DataAccess
 {
@@ -14,7 +15,7 @@ namespace OpenSupport.DataAccess
     {
         public override bool ShouldMap(Type type)
         {
-            return type.GetInterfaces().Any(t => type.Namespace != null && (t == typeof(IEntity) && type.Namespace.Contains("Core.Model")));
+            return type.GetInterfaces().Any(t => type.Namespace != null && (t == typeof(IEntity) && type.Namespace.EndsWith("Models.Entities")));
         }
     }
 }

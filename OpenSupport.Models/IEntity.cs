@@ -1,4 +1,4 @@
-﻿namespace OpenSupport.Core.Models
+﻿namespace OpenSupport.Models
 {
     public interface IEntity
     {

@@ -54,6 +54,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,6 +77,10 @@
     <ProjectReference Include="..\OpenSupport.Core\OpenSupport.Core.csproj">
       <Project>{699cee9c-391a-4532-a340-293a494b8d0f}</Project>
       <Name>OpenSupport.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenSupport.Models\OpenSupport.Models.csproj">
+      <Project>{8DABD889-FB12-46B6-8C01-9B93EEFEFAFE}</Project>
+      <Name>OpenSupport.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
