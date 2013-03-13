@@ -3,8 +3,10 @@ using System.Web.Mvc;
 using OpenSupport.Core.Models;
 using OpenSupport.Core.Services;
 using OpenSupport.DataAccess;
+using OpenSupport.DataAccess.Tools;
 using OpenSupport.Models.Entities;
 using OpenSupport.Web.ViewModels;
+
 
 namespace OpenSupport.Web.Controllers
 {
@@ -30,7 +32,7 @@ namespace OpenSupport.Web.Controllers
                     var user = new User
                     {
                         UserName = model.Configuration.AdminUserName,
-                        Password = model.Configuration.AdminPassword
+                        Password = PasswordHash.CreateHash(model.Configuration.AdminPassword)
                     };
 
                     var transaction = session.BeginTransaction();

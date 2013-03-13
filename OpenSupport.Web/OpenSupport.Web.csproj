@@ -182,12 +182,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\OpenSupportMembershipProvider.cs" />
+    <Compile Include="Security\OpenSupportRoleProvider.cs" />
     <Compile Include="Tools\LessTransformer.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\SetupViewModel.cs" />
@@ -250,6 +253,10 @@
     <ProjectReference Include="..\OpenSupport.Core\OpenSupport.Core.csproj">
       <Project>{699cee9c-391a-4532-a340-293a494b8d0f}</Project>
       <Name>OpenSupport.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenSupport.Dashboard\OpenSupport.Dashboard.csproj">
+      <Project>{415F01D9-E54E-4D05-BA3E-BD5880093480}</Project>
+      <Name>OpenSupport.Dashboard</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenSupport.DataAccess\OpenSupport.DataAccess.csproj">
       <Project>{edda5462-0740-47ba-a58b-2ffd1ef71251}</Project>
