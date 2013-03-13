@@ -22,7 +22,7 @@
         </div>
         <div>
             @Html.LabelFor(x => x.Configuration.AdminUserName, "Admin Username")
-            @Html.TextBoxFor(x => x.Configuration.AdminUserName, new { @Value = "Admin", @readonly = "readonly" })
+            @Html.TextBoxFor(x => x.Configuration.AdminUserName, new { data_placeholder = "Admin" })
         </div>
         <div>
             @Html.LabelFor(x => x.Configuration.AdminPassword, "Admin Password")
