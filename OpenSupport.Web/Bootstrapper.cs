@@ -25,7 +25,7 @@ namespace OpenSupport.Web
                 .InstancePerDependency();
 
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
-            builder.Register(x => OpenSupportSessionFactory.BuildSessionFactory()).SingleInstance();
+            builder.Register(x => OpenSupportSessionFactory.CreateSessionFactory()).SingleInstance();
             builder.Register(x => x.Resolve<ISessionFactory>().OpenSession()).InstancePerHttpRequest();
 
             var container = builder.Build();

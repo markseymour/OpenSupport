@@ -12,6 +12,7 @@ namespace OpenSupport.Core.Models
         void Add(T entity);
         void Remove(T entity);
         void Update(T entity);
+        void Flush();
 
         T Get(int id);
         IEnumerable<T> Fetch(Func<T, bool> predicate);

@@ -28,6 +28,11 @@ namespace OpenSupport.Core.Models
             _session.Merge(entity);
         }
 
+        public void Flush()
+        {
+            _session.Flush();
+        }
+
         public T Get(int id)
         {
             return _session.Get<T>(id);

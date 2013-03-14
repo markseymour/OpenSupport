@@ -1,4 +1,4 @@
-﻿@model OpenSupport.Core.Models.LoginModel
+﻿@model OpenSupport.Dashboard.ViewModels.LoginViewModel
 
 @Styles.Render("~/Styles/AdHocStyles/authentication")
 
@@ -13,10 +13,12 @@
             <legend></legend>
             <ol>
                 <li>
+                    @Html.ValidationMessageFor(x => x.UserName)
                     @Html.LabelFor(m => m.UserName)
                     @Html.TextBoxFor(m => m.UserName)
                 </li>
                 <li>
+                    @Html.ValidationMessageFor(x => x.Password)
                     @Html.LabelFor(m => m.Password)
                     @Html.PasswordFor(m => m.Password)
                 </li>

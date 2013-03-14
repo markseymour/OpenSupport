@@ -18,26 +18,24 @@ namespace OpenSupport.DataAccess
 {
     public class OpenSupportSessionFactory
     {
-        private static FluentConfiguration GetConfiguration()
+        public static ISessionFactory CreateSessionFactory(string connectionString = null)
         {
+            var autoMap = AutoMap.AssemblyOf<IEntity>(new AutomappingConfiguration())
+                .Conventions.AddFromAssemblyOf<AutomappingConfiguration>();
+
+
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008
-                .ConnectionString(SiteManager.CurrentSite().ConnectionString))
-                .Mappings(m => m.AutoMappings
-                    .Add(AutoMap.AssemblyOf<IEntity>(new AutomappingConfiguration())
-                    .Conventions.AddFromAssemblyOf<AutomappingConfiguration>()));
-        }
-
-        public static ISessionFactory BuildSessionFactory()
-        {
-           return GetConfiguration().BuildSessionFactory();
-        }
-
-        public static ISessionFactory BuildInitialDatabase()
-        {
-            return GetConfiguration()
-                .ExposeConfiguration(c => new SchemaExport(c).Execute(true, true, false))
+                .ConnectionString(connectionString ?? SiteManager.CurrentSite().ConnectionString))
+                .Mappings(m => m.AutoMappings.Add(autoMap))
+                .ExposeConfiguration(TreatConfiguration)
                 .BuildSessionFactory();
+        }
+
+        public static void TreatConfiguration(Configuration configuration)
+        {
+            var update = new SchemaUpdate(configuration);
+            update.Execute(false, true);
         }
     }
 }

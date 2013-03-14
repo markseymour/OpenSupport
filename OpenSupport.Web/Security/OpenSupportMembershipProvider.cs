@@ -7,10 +7,11 @@ using System.Web.Security;
 using OpenSupport.Core.Models;
 using OpenSupport.Dashboard.Services;
 using OpenSupport.Models.Entities;
+using WebMatrix.WebData;
 
 namespace OpenSupport.Web.Security
 {
-    public class OpenSupportMembershipProvider : MembershipProvider 
+    public class OpenSupportMembershipProvider : ExtendedMembershipProvider 
     {
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer,
                                                   bool isApproved, object providerUserKey, out MembershipCreateStatus status)
@@ -145,6 +146,76 @@ namespace OpenSupport.Web.Security
         public override string PasswordStrengthRegularExpression
         {
             get { throw new NotImplementedException(); }
+        }
+
+        public override ICollection<OAuthAccountData> GetAccountsForUser(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CreateUserAndAccount(string userName, string password, bool requireConfirmation, IDictionary<string, object> values)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CreateAccount(string userName, string password, bool requireConfirmationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool ConfirmAccount(string userName, string accountConfirmationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool ConfirmAccount(string accountConfirmationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool DeleteAccount(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GeneratePasswordResetToken(string userName, int tokenExpirationInMinutesFromNow)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int GetUserIdFromPasswordResetToken(string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsConfirmed(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool ResetPasswordWithToken(string token, string newPassword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int GetPasswordFailuresSinceLastSuccess(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DateTime GetCreateDate(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DateTime GetPasswordChangedDate(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DateTime GetLastPasswordFailureDate(string userName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -11,6 +11,8 @@ namespace OpenSupport.Dashboard.Services
     public interface IAuthenticationService : IDependency
     {
         bool ValidateUser(string username, string password);
-        User CreateUser(string username, string password, string fullname);
+        User CreateUser(string username, string password);
+        void Login(string username, string password);
+        void Logout();
     }
 }

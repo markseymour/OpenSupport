@@ -36,9 +36,7 @@ namespace OpenSupport.Core.Services
 
         public static SiteSettingsRecord LoadSite(string site = "Default")
         {
-            return GetAllSites()
-                .Where(x => x.SiteName.ToLowerInvariant() == site.ToLowerInvariant())
-                .SingleOrDefault();
+            return GetAllSites().SingleOrDefault(x => x.SiteName.ToLowerInvariant() == site.ToLowerInvariant());
         }
 
         public static IEnumerable<SiteSettingsRecord> GetAllSites()

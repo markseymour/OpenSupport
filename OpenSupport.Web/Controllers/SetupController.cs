@@ -6,6 +6,7 @@ using OpenSupport.DataAccess;
 using OpenSupport.DataAccess.Tools;
 using OpenSupport.Models.Entities;
 using OpenSupport.Web.ViewModels;
+using WebMatrix.WebData;
 
 
 namespace OpenSupport.Web.Controllers
@@ -15,7 +16,12 @@ namespace OpenSupport.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            var siteSettings = SiteManager.CurrentSite();
+
             var model = new SetupViewModel();
+            
+            if(siteSettings != null)
+                model.Configuration = siteSettings;
 
             return View(model);
         }
@@ -23,25 +29,47 @@ namespace OpenSupport.Web.Controllers
         [HttpPost]
         public ActionResult Index(SetupViewModel model)
         {
-            SiteManager.SaveSite(model.Configuration);
+            if (!ModelState.IsValid)
+                return View(model);
 
-            using (var sessionFactory = OpenSupportSessionFactory.BuildInitialDatabase())
+            var adminUser = new User
             {
-                using (var session = sessionFactory.OpenSession())
+                UserName = model.Configuration.AdminUserName,
+                Password = PasswordHash.CreateHash(model.Configuration.AdminPassword)
+            };
+
+            try
+            {
+                using (var sessionFactory = OpenSupportSessionFactory.CreateSessionFactory(model.Configuration.ConnectionString))
                 {
-                    var user = new User
+                    SiteManager.SaveSite(model.Configuration);
+                    using (var session = sessionFactory.OpenSession())
                     {
-                        UserName = model.Configuration.AdminUserName,
-                        Password = PasswordHash.CreateHash(model.Configuration.AdminPassword)
-                    };
 
-                    var transaction = session.BeginTransaction();
 
-                    session.Save(user);
-                    transaction.Commit();
+                        var userMembership = new UserMembership
+                        {
+                            Role = Role.Administrator,
+                            User = adminUser
+                        };
+
+                        var transaction = session.BeginTransaction();
+
+                        session.Save(adminUser);
+                        session.Save(userMembership);
+                        transaction.Commit();
+                    }
                 }
             }
+            catch
+            {
+                ModelState.AddModelError("__FormValidation", "Failed to initialize database (check connection string)");
+                return View(model);
+            }
+
             
+            WebSecurity.Login(model.Configuration.AdminUserName, model.Configuration.AdminPassword);
+
             return RedirectToAction("Index", "Home");
         }
     }

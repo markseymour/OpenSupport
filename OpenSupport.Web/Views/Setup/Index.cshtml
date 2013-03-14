@@ -10,7 +10,7 @@
 
     @using (Html.BeginForm())
     {
-        <div id="__FormValidation">@Html.ValidationMessage("__FormValidation")</div>
+        <div id="__FormValidation">@Html.ValidationSummary()</div>
         <div>
             @Html.LabelFor(x => x.Configuration.SiteName, "Site Name")
             @Html.TextBoxFor(x => x.Configuration.SiteName, new { @Value = "Default", @readonly = "readonly" })
