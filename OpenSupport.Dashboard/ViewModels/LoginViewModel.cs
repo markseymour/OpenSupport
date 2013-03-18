@@ -10,6 +10,8 @@ namespace OpenSupport.Dashboard.ViewModels
 {
     public class LoginViewModel
     {
+        public String ReturnUrl { get; set; }
+
         [Required(ErrorMessage="Username required")]
         public String UserName { get; set; }
         [Required(ErrorMessage = "Password required")]

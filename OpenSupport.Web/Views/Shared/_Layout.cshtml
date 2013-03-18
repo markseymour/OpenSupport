@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@functions {
+    bool IsPage(string action, string controller = "") {
+        return (String.IsNullOrEmpty(action) || ViewContext.RouteData.Values["action"].ToString() == action) &&
+            (String.IsNullOrEmpty(controller) || ViewContext.RouteData.Values["controller"].ToString() == controller);
+    }
+}
+
+
+@{
+    var displayNavigation = !IsPage("", "Account");
+}
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -9,14 +21,19 @@
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        <nav>
+        <header>
             @Html.Partial("_LoginPartial")
-        </nav>
-
+        </header>
+        
         <div id="MainContentContainer">
+            @if(displayNavigation) {
+                @Html.Partial("_Navigation")
+            }
+
             <div id="Content">
                 @RenderBody()
             </div>
+
         </div>
         
         <aside>

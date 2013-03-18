@@ -1,0 +1,13 @@
+﻿@using OpenSupport.Utility.Helpers
+
+<div id="Navigation">
+    <ul id="Nav">
+        <li class="menu-link">@Html.MenuLink("Questions", "Index", "Home")</li>
+        <li class="menu-link">@Html.MenuLink("Tags", "Index", "Tags")</li>
+        <li class="menu-link">@Html.MenuLink("Unanswered", "Unanswered", "Question")</li>
+    </ul>
+    
+    <ul id="AskQuestion">
+        <li>@Html.MenuLink("Ask Question", "Ask", "Question")</li>
+    </ul>
+</div>

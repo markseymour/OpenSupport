@@ -4,11 +4,12 @@
 
 <div id="AuthenticationForm">
     <h1>Log in</h1>
+
     <section id="loginForm">
-    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-
+        @Html.HiddenFor(x => x.ReturnUrl)
         <fieldset>
             <legend></legend>
             <ol>
@@ -30,7 +31,7 @@
             <input type="submit" value="Log in" />
         </fieldset>
         <p>
-            @Html.ActionLink("Register", "Register") if you don't have an account.
+            @Html.ActionLink("Register", "Register", new { ReturnUrl = Model.ReturnUrl }) if you don't have an account.
         </p>
     }
     </section>

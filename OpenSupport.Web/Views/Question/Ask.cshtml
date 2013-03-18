@@ -1,0 +1,29 @@
+﻿@model OpenSupport.Dashboard.ViewModels.AskQuestionViewModel
+
+
+<div id="AskForm">
+    <h1>Ask Question</h1>
+
+    <section>
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <legend></legend>
+                
+                <div>
+                    @Html.LabelFor(x => x.Question.Title)
+                    @Html.TextBoxFor(x => x.Question.Title)
+                </div>
+                
+                <div>
+                    @Html.LabelFor(x => x.Question.Body)
+                    @Html.TextBoxFor(x => x.Question.Body)
+                </div>
+                <input type="submit" value="Ask" />
+            </fieldset>
+            
+        }
+    </section>
+</div>
+        

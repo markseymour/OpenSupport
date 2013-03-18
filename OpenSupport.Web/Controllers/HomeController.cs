@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OpenSupport.Core.Models;
+using OpenSupport.Dashboard.Services;
 using OpenSupport.Models.Entities;
 using OpenSupport.Web.ViewModels;
 
@@ -11,17 +12,21 @@ namespace OpenSupport.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRepository<QuestionRecord> _questionRepo;
+        private readonly IQuestionService _questionService;
 
-        public HomeController(IRepository<QuestionRecord> questionRepo)
+        public HomeController(IQuestionService questionService)
         {
-            _questionRepo = questionRepo;
+            _questionService = questionService;
         }
 
         public ActionResult Index()
         {
-            var questions = _questionRepo.FetchAll();
-            return View();
+            var model = new IndexViewModel
+            {
+                Questions = _questionService.GetAllQuestions()
+            };
+
+            return View(model);
         }
     }
 }

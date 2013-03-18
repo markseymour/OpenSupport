@@ -7,12 +7,12 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary()
-
+        @Html.HiddenFor(x => x.ReturnUrl)
         <fieldset>
             <legend></legend>
             <ol>
                 <li>
-                    @Html.LabelFor(m => m.UserName)
+                    @Html.LabelFor(m => m.UserName, "User Name")
                     @Html.TextBoxFor(m => m.UserName)
                 </li>
                 <li>
@@ -20,7 +20,7 @@
                     @Html.PasswordFor(m => m.Password)
                 </li>
                 <li>
-                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.LabelFor(m => m.ConfirmPassword, "Confirm Password")
                     @Html.PasswordFor(m => m.ConfirmPassword)
                 </li>
             </ol>

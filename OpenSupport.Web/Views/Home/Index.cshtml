@@ -1,1 +1,33 @@
-﻿
+﻿@model OpenSupport.Web.ViewModels.IndexViewModel
+
+<div id="TopQuestions" class="clearfix">
+    
+    <h1>Top Questions</h1>
+    
+    <ul id="TopQuestions_Catagory">
+        <li class="active"><a>Most Recent</a></li>
+        <li><a>This Week</a></li>
+        <li><a>This Month</a></li>
+    </ul>
+
+</div>
+
+<div id="Questions">
+    
+    @foreach (var question in Model.Questions)
+    {
+        <div class="question-container">
+            <div>
+                @question.Title
+            </div>
+            <div>
+                @question.Body
+                @question.DatePosted
+                @question.Views
+                @question.Votes
+                @question.IsAnswered
+            </div>
+        </div>
+    }
+
+</div>

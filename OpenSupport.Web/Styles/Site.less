@@ -4,13 +4,23 @@
 @linkColor: #18B8EB;
 @linkHover: darken(@linkColor, 10);
 
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
 html { height: 100%; }
 
 body {
 	height: 100%;
 	color: #666;
 	font-family: @font_Segoe;
-	background: 0 0 url("images/bg.png")
+	background: 0 0 url("images/bg.png");
+	position: relative;
 }
 
 a {
@@ -25,7 +35,7 @@ input[readonly=readonly] {
 	opacity: 0.5;
 }
 
-nav {
+header {
 	z-index: 100;
 	position: fixed;
 	margin-left: -(@main-width/2) + 1 ;
@@ -86,9 +96,41 @@ nav {
 	}
 }
 
+#Navigation {
+	margin: 20px;
+	ul {
+		display: inline-block;
+		&#AskQuestion { float: right; }
+		li {
+			display: inline-block;
+			padding: 5px 10px;
+			background: rgb(255,255,255);
+			background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
+			background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+			background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+			background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+			background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+			text-shadow: 1px 1px white;
+			border: 1px solid #C0BEBE;
+			box-shadow: 0 0 3px -1px #666;
+			margin-right: 5px;
+			a {
+				color: #AFAFAF;
+			
+				&.active, &:hover {
+					color: #E0B57E;
+				}
+			}
+		}
+	}
+}
+
 #MainContentContainer {
 	padding: 45px 10px 10px 10px;
 	position: relative;
+	border-radius: 5px 5px 0 0;
 	box-shadow: 0 1px 10px 0px #666;
 	background: white;
 	margin: 0 auto 0 auto;
@@ -105,7 +147,48 @@ aside {
 }
 
 #Content {
-	width: 100%;
+	padding: 10px;
+
+	h1 {
+		float: left;
+		font-weight: bold;
+		font-size: 20px;
+		color: #A2A19E;
+		position: relative;
+		top: 5px;
+	}
+
+	#TopQuestions {
+		border: 1px solid #ccc;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		ul#TopQuestions_Catagory {
+			float: right;
+			margin-right: 20px;
+			li {
+				display: inline-block;
+				border: 1px solid #ccc;
+				border-bottom: none;
+				padding: 5px 8px;
+				cursor: pointer;
+				position: relative;
+				z-index: 100;
+				background: white;
+				top: 5px;
+				a {
+					color: #A1A9AC;
+				}
+				&.active {
+					top: 1px;
+					padding: 10px 8px;
+					a {
+						color: @linkColor;
+					}
+				}
+			}
+		}
+	}
 }
 
 input[type=text], input[type=password] {

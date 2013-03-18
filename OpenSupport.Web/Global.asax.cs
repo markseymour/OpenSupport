@@ -1,15 +1,9 @@
-﻿using Autofac;
-using Autofac.Integration.Mvc;
-using System;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using NHibernate;
-using OpenSupport.Core.Models;
-using OpenSupport.DataAccess;
+using OpenSupport.Setup;
 
 namespace OpenSupport.Web
 {
@@ -22,7 +16,7 @@ namespace OpenSupport.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ControllerBuilder.Current.SetControllerFactory(new Setup.InializeControllerFactory());
+            ControllerBuilder.Current.SetControllerFactory(new InializeControllerFactory());
             Bootstrapper.Run();
         }
     }

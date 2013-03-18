@@ -24,9 +24,14 @@ namespace OpenSupport.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(string ReturnUrl)
         {
-            return View();
+            var model = new LoginViewModel
+            {
+                ReturnUrl = ReturnUrl
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -42,6 +47,9 @@ namespace OpenSupport.Web.Controllers
             }
             
             WebSecurity.Login(model.UserName, model.Password);
+            
+            if (!string.IsNullOrEmpty(model.ReturnUrl))
+                return Redirect(model.ReturnUrl);
 
             return RedirectToAction("Index", "Home");
         }
@@ -58,9 +66,14 @@ namespace OpenSupport.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Register()
+        public ActionResult Register(string ReturnUrl)
         {
-            return View();
+            var model = new RegisterViewModel
+            {
+                ReturnUrl = ReturnUrl
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -85,6 +98,9 @@ namespace OpenSupport.Web.Controllers
             }
 
             _authenticationSerivce.Login(model.UserName, model.Password);
+
+            if(!String.IsNullOrEmpty(model.ReturnUrl))
+                return Redirect(model.ReturnUrl);
 
             return RedirectToAction("Index", "Home");
         }

@@ -181,9 +181,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,7 +215,9 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Styles\Images\bg.png" />
     <Content Include="Styles\Images\profile.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -239,6 +241,9 @@
     <Content Include="Views\Shared\_SetupLayout.cshtml" />
     <Content Include="Styles\AdHocStyles\Setup.less" />
     <Content Include="Styles\AdHocStyles\Authentication.less" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Question\Ask.cshtml" />
+    <Content Include="Views\Question\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,6 +272,10 @@
     <ProjectReference Include="..\OpenSupport.Setup\OpenSupport.Setup.csproj">
       <Project>{061cb4b6-b7de-43ad-a14c-246fc96013d1}</Project>
       <Name>OpenSupport.Setup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenSupport.Utility\OpenSupport.Utility.csproj">
+      <Project>{68284FED-0431-4506-AD09-8492FAC27DF6}</Project>
+      <Name>OpenSupport.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
