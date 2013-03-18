@@ -14,18 +14,26 @@
 
 <div id="Questions">
     
-    @foreach (var question in Model.Questions)
+    @foreach (var SiteQuestion in Model.SiteQuestions)
     {
+        var isAnswered = @SiteQuestion.Question.IsAnswered ? "is-answered" : "";
+        
         <div class="question-container">
-            <div>
-                @question.Title
+            <div class="question-metrics">
+                <ul>
+                    <li class="votes"><div>@SiteQuestion.Question.Votes</div>Votes</li>
+                    <li class="answers @isAnswered"><div>@SiteQuestion.Answers.Count()</div>Answers</li>
+                    <li class="views"><div>@SiteQuestion.Question.Views</div>Views</li>
+                </ul>
             </div>
-            <div>
-                @question.Body
-                @question.DatePosted
-                @question.Views
-                @question.Votes
-                @question.IsAnswered
+            <div class="question-title">
+                @Html.ActionLink(SiteQuestion.Question.Title, "Details", "Question", new { Id = SiteQuestion.Question.Id }, null)
+            </div>
+            <div class="question-owner">
+                @Html.ActionLink(SiteQuestion.Question.Owner.UserName, "Profile", "User", new { Id = SiteQuestion.Question.Owner.Id }, null)
+            </div>
+            <div class="question-date">
+                @SiteQuestion.Question.DatePosted.ToString("dd MMM yyyy")
             </div>
         </div>
     }

@@ -20,12 +20,20 @@ namespace OpenSupport.Core.Models
 
         public void Add(T entity)
         {
-            _session.Save(entity);
+            using (var transaction = _session.BeginTransaction())
+            {
+                _session.Save(entity);
+                transaction.Commit();
+            }
         }
 
         public void Update(T entity)
         {
-            _session.Merge(entity);
+            using (var transaction = _session.BeginTransaction())
+            {
+                _session.Merge(entity);
+                transaction.Commit();
+            }
         }
 
         public void Flush()

@@ -1,7 +1,7 @@
 ﻿@font_Segoe: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
 @top-margin: 35px;
 @main-width: 950px;
-@linkColor: #18B8EB;
+@linkColor: #39AED3;
 @linkHover: darken(@linkColor, 10);
 
 .clearfix:after {
@@ -189,6 +189,64 @@ aside {
 			}
 		}
 	}
+
+	#Questions {
+		> div.question-container {
+			
+			padding: 10px;
+			border-bottom: 1px solid #ECECEC;
+			> div.question-metrics {
+				display: inline-block;
+				ul {
+					li {
+						font-size: 14px;
+						display: inline-block;
+						width: 55px;
+						height: 35px;
+						padding: 5px;
+						text-align: center;
+						> div {
+							font-size: 20px;
+							margin-bottom: 3px;
+						}
+						&.views {
+							color: #ccc;
+						}
+						&.answers {
+							color: #D56868;
+							&.is-answered {
+								color: white;
+								background: #849B66;
+							}
+						}
+					}
+				}
+			}
+
+			> div.question-title {
+				display: inline-block;
+				font-size: 20px;
+				vertical-align: top;
+				margin: 5px 0 0 10px;
+			}
+
+			> div.question-owner {
+				float: right;
+				padding-top: 5px;
+				font-size: 16px;
+				display: inline-block;
+			}
+
+			> div.question-date {
+				float: right;
+				padding-top: 15px;
+				font-size: 12px;
+				display: inline-block;
+				clear: right;
+			}
+
+		}
+	}
 }
 
 input[type=text], input[type=password], textarea{
@@ -266,29 +324,30 @@ input[type=submit] {
 		background: -ms-linear-gradient(top,  rgba(237,237,237,1) 0%,rgba(246,246,246,1) 53%,rgba(255,255,255,1) 100%);
 		background: linear-gradient(to bottom,  rgba(237,237,237,1) 0%,rgba(246,246,246,1) 53%,rgba(255,255,255,1) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff',GradientType=0 );
-
 	}
 }
 
 .form {
 	> section {
+		display: none;
 		width: 80%;
 		clear: both;
 		margin: 20px auto 0 auto;
 		div {
 			width: 100%;
 			position: relative;
+			&#HtmlEditor {
+				> span > table { margin-left: 125px; }
+			}
 		}
 		label {
-			display: inline-block;
-			width: 120px;
-			text-align: right;
-			position: absolute;
-			top: 7px;
+			display: block;
 			color: #929292;
+			margin: 10px 10px 3px 125px;
+
 		}
 		input[type=text], textarea {
-			width: 500px;
+			width: 503px;
 			margin-left: 125px;
 		}
 
@@ -297,7 +356,7 @@ input[type=submit] {
 		}
 
 		input[type=submit] {
-			margin: 20px 90px 0 0;
+			margin: 20px 86px 0 0;
 			float: right;
 		}
 	}

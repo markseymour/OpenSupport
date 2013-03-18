@@ -11,7 +11,10 @@ namespace OpenSupport.Dashboard.Services
 {
     public interface IQuestionService : IDependency
     {
+        void Update(QuestionRecord question);
         QuestionRecord CreateQuestion(AskQuestionViewModel model);
+        QuestionRecord GetQuestion(int Id);
         IEnumerable<QuestionRecord> GetAllQuestions();
+        IEnumerable<AnswerRecord> GetAnswersForQuestion(int Id);
     }
 }

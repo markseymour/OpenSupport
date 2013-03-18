@@ -15,15 +15,6 @@ namespace OpenSupport.Setup
                 return base.CreateController(requestContext, "Setup");
             }
 
-            try
-            {
-                return base.CreateController(requestContext, controllerName);
-            } 
-            catch
-            {
-                Bootstrapper.Run();
-            }
-
             return base.CreateController(requestContext, controllerName);
         }
     }

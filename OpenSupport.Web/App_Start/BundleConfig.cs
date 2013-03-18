@@ -14,6 +14,9 @@ namespace OpenSupport.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/tinymce").Include(
+                "~/Scripts/tinymce/*.js"));
+
             bundles.Add(GetLessBundle());
             bundles.Add(GetSetupBundle());
             bundles.Add(GetLoginBundle());

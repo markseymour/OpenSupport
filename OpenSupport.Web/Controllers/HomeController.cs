@@ -21,9 +21,13 @@ namespace OpenSupport.Web.Controllers
 
         public ActionResult Index()
         {
+            var questionAndAnswers = _questionService.GetAllQuestions()
+                .OrderByDescending(x => x.DatePosted)
+                .Select(x => new QuestionDisplay { Question = x, Answers = _questionService.GetAnswersForQuestion(x.Id) });
+
             var model = new IndexViewModel
             {
-                Questions = _questionService.GetAllQuestions()
+                SiteQuestions = questionAndAnswers
             };
 
             return View(model);

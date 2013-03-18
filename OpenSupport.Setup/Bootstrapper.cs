@@ -25,7 +25,7 @@ namespace OpenSupport.Setup
 
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.Register(x => OpenSupportSessionFactory.CreateSessionFactory()).SingleInstance();
-            builder.Register(x => x.Resolve<ISessionFactory>().OpenSession()).InstancePerHttpRequest();
+            builder.Register(x => x.Resolve<ISessionFactory>().OpenSession()).InstancePerLifetimeScope();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

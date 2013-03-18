@@ -40,6 +40,9 @@ namespace OpenSupport.Web.Controllers
         [HttpPost]
         public ActionResult Ask(AskQuestionViewModel model)
         {
+            if (!ModelState.IsValid)
+                return View(model);
+
             var newQuestion = _questionService.CreateQuestion(model);
 
             return RedirectToAction("Details", new { Id = newQuestion.Id });
@@ -48,6 +51,9 @@ namespace OpenSupport.Web.Controllers
         [HttpGet]
         public ActionResult Details(int Id)
         {
+            var question = _questionService.GetQuestion(Id);
+            question.Views = question.Views + 1;
+            _questionService.Update(question);
             return View();
         }
     }
