@@ -1,7 +1,7 @@
 ﻿@model OpenSupport.Dashboard.ViewModels.AskQuestionViewModel
 
 
-<div id="AskForm">
+<div id="AskForm" class="form">
     <h1>Ask Question</h1>
 
     <section>
@@ -17,12 +17,11 @@
                 </div>
                 
                 <div>
-                    @Html.LabelFor(x => x.Question.Body)
-                    @Html.TextBoxFor(x => x.Question.Body)
+                    @Html.LabelFor(x => x.Question.Body, "Question")
+                    @Html.TextAreaFor(x => x.Question.Body)
                 </div>
                 <input type="submit" value="Ask" />
             </fieldset>
-            
         }
     </section>
 </div>

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Web.Mvc;
 using OpenSupport.Core.Models;
 using OpenSupport.Core.Services;
@@ -61,9 +62,9 @@ namespace OpenSupport.Web.Controllers
                     }
                 }
             }
-            catch
+            catch(Exception e)
             {
-                ModelState.AddModelError("__FormValidation", "Failed to initialize database (check connection string)");
+                ModelState.AddModelError("__FormValidation", e.InnerException.Message);
                 return View(model);
             }
 

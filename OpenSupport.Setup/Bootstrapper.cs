@@ -14,10 +14,9 @@ namespace OpenSupport.Setup
         public static void Run()
         {
             var builder = new ContainerBuilder();
-
             var appAssemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-            builder.RegisterControllers(appAssemblies).InstancePerLifetimeScope();
+            builder.RegisterControllers(appAssemblies);
             
             builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
                 .Where(x => x.GetInterfaces().Any(i => i.IsAssignableFrom(typeof(IDependency))))

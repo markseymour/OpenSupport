@@ -191,7 +191,7 @@ aside {
 	}
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], textarea{
 	transition: all .2s;
 	-moz-transition: all .2s; 
 	-webkit-transition: all .2s; 
@@ -199,6 +199,7 @@ input[type=text], input[type=password] {
 	display: inline-block;
 	padding: 4px 5px;
 	width: 250px;
+	resize: none;
 	border: 1px solid #cccccc;
 	&:active, &:focus {
 		outline: none;
@@ -266,5 +267,38 @@ input[type=submit] {
 		background: linear-gradient(to bottom,  rgba(237,237,237,1) 0%,rgba(246,246,246,1) 53%,rgba(255,255,255,1) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff',GradientType=0 );
 
+	}
+}
+
+.form {
+	> section {
+		width: 80%;
+		clear: both;
+		margin: 20px auto 0 auto;
+		div {
+			width: 100%;
+			position: relative;
+		}
+		label {
+			display: inline-block;
+			width: 120px;
+			text-align: right;
+			position: absolute;
+			top: 7px;
+			color: #929292;
+		}
+		input[type=text], textarea {
+			width: 500px;
+			margin-left: 125px;
+		}
+
+		textarea {
+			height: 200px;
+		}
+
+		input[type=submit] {
+			margin: 20px 90px 0 0;
+			float: right;
+		}
 	}
 }
