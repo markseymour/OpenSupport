@@ -13,8 +13,8 @@ namespace OpenSupport.Dashboard.Services
     {
         void Update(QuestionRecord question);
         QuestionRecord CreateQuestion(AskQuestionViewModel model);
-        QuestionRecord GetQuestion(int Id);
+        QuestionRecord GetQuestion(int id);
         IEnumerable<QuestionRecord> GetAllQuestions();
-        IEnumerable<AnswerRecord> GetAnswersForQuestion(int Id);
+        IEnumerable<AnswerRecord> GetAnswersForQuestion(int id);
     }
 }

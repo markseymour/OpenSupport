@@ -22,7 +22,7 @@ namespace OpenSupport.Dashboard.Services
         public User GetCurrentUser()
         {
             var currentUserName = HttpContext.Current.User.Identity.Name;
-            return _userRepository.FetchAll().FirstOrDefault(x => x.UserName == currentUserName);
+            return _userRepository.FirstOrDefault(x => x.UserName == currentUserName);
         }
     }
 }

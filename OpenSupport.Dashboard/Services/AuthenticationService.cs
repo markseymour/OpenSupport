@@ -26,7 +26,7 @@ namespace OpenSupport.Dashboard.Services
 
         public bool ValidateUser(string username, string password)
         {
-            var user = _userRepository.Fetch(x => x.UserName.ToLower() == username.ToLower()).FirstOrDefault();
+            var user = _userRepository.FirstOrDefault(x => x.UserName.ToLower() == username.ToLower());
             return user != null && PasswordHash.ValidatePassword(password, user.Password);
         }
 

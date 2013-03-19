@@ -45,17 +45,17 @@ namespace OpenSupport.Dashboard.Services
 
         public IEnumerable<QuestionRecord> GetAllQuestions()
         {
-            return _questionRepository.FetchAll();
+            return _questionRepository.ToList();
         }
 
-        public QuestionRecord GetQuestion(int Id)
+        public QuestionRecord GetQuestion(int id)
         {
-            return GetAllQuestions().FirstOrDefault(x => x.Id == Id);
+            return GetAllQuestions().FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<AnswerRecord> GetAnswersForQuestion(int Id)
+        public IEnumerable<AnswerRecord> GetAnswersForQuestion(int id)
         {
-            return _answerRepository.FetchAll().Where(x => x.ForQuestion.Id == Id);
+            return _answerRepository.Where(x => x.ForQuestion.Id == id);
         }
     }
 }

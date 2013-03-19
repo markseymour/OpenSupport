@@ -7,7 +7,7 @@ using NHibernate;
 
 namespace OpenSupport.Core.Models
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> : IQueryable<T> where T : class
     {
         void Add(T entity);
         void Remove(T entity);
@@ -15,7 +15,5 @@ namespace OpenSupport.Core.Models
         void Flush();
 
         T Get(int id);
-        IEnumerable<T> Fetch(Func<T, bool> predicate);
-        IEnumerable<T> FetchAll();
     }
 }

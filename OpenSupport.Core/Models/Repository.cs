@@ -46,19 +46,43 @@ namespace OpenSupport.Core.Models
             return _session.Get<T>(id);
         }
 
-        public IEnumerable<T> Fetch(Func<T, bool> predicate)
-        {
-            return _session.Query<T>().Where(predicate);
-        }
-
-        public IEnumerable<T> FetchAll()
-        {
-            return _session.Query<T>().AsEnumerable<T>();
-        }
-
         public void Remove(T entity)
         {
             _session.Delete(entity);
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return _session.Query<T>().GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public Expression Expression
+        {
+            get
+            {
+                return _session.Query<T>().Expression;
+            }
+        }
+        
+        public Type ElementType
+        {
+            get
+            {
+                return _session.Query<T>().ElementType;
+            }
+        }
+
+        public IQueryProvider Provider
+        {
+            get
+            {
+                return _session.Query<T>().Provider;
+            }
         }
     }
 }
