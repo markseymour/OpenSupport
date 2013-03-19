@@ -168,20 +168,25 @@ aside {
 			margin-right: 20px;
 			li {
 				display: inline-block;
-				border: 1px solid #ccc;
-				border-bottom: none;
 				padding: 5px 8px;
 				cursor: pointer;
 				position: relative;
 				z-index: 100;
 				background: white;
-				top: 5px;
+				top: 2px;
 				a {
 					color: #A1A9AC;
 				}
+				&:hover {
+					a {
+						color: @linkColor;
+					}
+				}
 				&.active {
 					top: 1px;
-					padding: 10px 8px;
+					padding: 7px 8px;
+					border: 1px solid #ccc;
+					border-bottom: none;
 					a {
 						color: @linkColor;
 					}
