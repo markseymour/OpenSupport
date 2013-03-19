@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
-      <HintPath>..\OpenSupport.Web\bin\Autofac.dll</HintPath>
+      <HintPath>..\lib\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc">
       <HintPath>..\OpenSupport.Web\bin\Autofac.Integration.Mvc.dll</HintPath>

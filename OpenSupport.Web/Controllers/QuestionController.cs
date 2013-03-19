@@ -16,10 +16,14 @@ namespace OpenSupport.Web.Controllers
     public class QuestionController : Controller
     {
         private readonly IQuestionService _questionService;
+        private readonly IReplyService _replyService;
+        private readonly IAnswerService _answerService;
 
-        public QuestionController(IQuestionService questionService)
+        public QuestionController(IQuestionService questionService, IReplyService replyService, IAnswerService answerService)
         {
             _questionService = questionService;
+            _replyService = replyService;
+            _answerService = answerService;
         }
 
         [HttpGet]
@@ -54,7 +58,20 @@ namespace OpenSupport.Web.Controllers
             var question = _questionService.GetQuestion(Id);
             question.Views = question.Views + 1;
             _questionService.Update(question);
-            return View();
+
+            var model = new QuestionDetailsViewModel();
+            var questionAndReplies = new QuestionAndReplies
+                {
+                    Question = _questionService.GetQuestion(Id),
+                    Replies = _replyService.GetReplies(Id)
+                };
+
+            var answersAndReplies = _answerService.GetAnswersFor(Id).Select(x => new AnswerAndReplies { Answer = x, Replies = _replyService.GetReplies(x.Id) });
+
+            model.Question = questionAndReplies;
+            model.Answers = answersAndReplies;
+
+            return View(model);
         }
     }
 }

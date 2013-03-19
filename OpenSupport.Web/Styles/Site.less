@@ -31,6 +31,15 @@ a {
 	}
 }
 
+hr {
+    display:block;
+    border:none;
+    color:white;
+    height:1px;
+    background:black;
+    background: -webkit-gradient(radial, 0% 5%, 0, 50% 50%, 480, from(#ccc), to(#fff));
+}
+
 input[readonly=readonly] {
 	opacity: 0.5;
 }
@@ -140,6 +149,27 @@ header {
 	border-top: none;
 	border-bottom: none;
 	box-sizing: border-box;
+	
+	#PageLoader {
+		background: white;
+		width: 100%;
+		position: absolute;
+		z-index: 1000;
+		left: 0;
+		top: 55px;
+		&:before {
+			content: '';
+			width: 126px;
+			height: 120px;
+			position: absolute;
+			background: 0 15px no-repeat url("images/pageloader.gif");
+			margin-left: -70px;
+			text-align: center;
+			font-size: 19px;
+			right: -33px;
+			bottom: -5px;
+		}
+	}
 }
 
 aside {
@@ -148,7 +178,7 @@ aside {
 
 #Content {
 	padding: 10px;
-
+	position: relative;
 	h1 {
 		float: left;
 		font-weight: bold;
@@ -230,7 +260,7 @@ aside {
 
 			> div.question-title {
 				display: inline-block;
-				font-size: 20px;
+				font-size: 18px;
 				vertical-align: top;
 				margin: 5px 0 0 10px;
 			}
@@ -248,6 +278,59 @@ aside {
 				font-size: 12px;
 				display: inline-block;
 				clear: right;
+			}
+
+		}
+	}
+
+	#QuestionDetails {
+		#QuestionTitle {
+			font-size: 18px;
+			color: @linkColor;
+			margin: 10px 0 5px 0;
+		}
+
+		.vote-container {
+			float: left;
+			height: 200px;
+			width: 125px;
+			margin-top: 10px;
+			margin-left: 0; 
+			
+			.vote-up {
+				width: 50px;
+				height: 50px;
+				margin-left: 75px;
+				background: -436px -120px no-repeat url("images/arrows.png");
+				cursor: pointer;
+			}
+
+			.votes {
+				margin: 10px 0 10px 77px;
+				font-size: 20px;
+				text-align: center;
+			}
+
+			.vote-down {
+				width: 50px;
+				height: 50px;
+				margin-left: 75px;
+				background: -589px -139px no-repeat url("images/arrows.png");
+				cursor: pointer;
+			}
+		}
+
+		#QuestionAndReplies {
+			width: 80%;
+			float: right;
+			margin: 20px 28px 0 0;
+			textarea {
+				width: 100%;
+				+ span {
+					> table, .mceIframeContainer.mceFirst.mceLast { 
+						border: none;
+					}
+				}
 			}
 
 		}

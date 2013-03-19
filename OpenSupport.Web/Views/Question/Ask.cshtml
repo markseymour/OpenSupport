@@ -20,7 +20,7 @@
                     @Html.LabelFor(x => x.Question.Body, "Question")
                     @Html.TextAreaFor(x => x.Question.Body)
                 </div>
-                <input type="submit" value="Ask" />
+                <input type="submit" value="Ask your question" />
             </fieldset>
         }
     </section>
@@ -36,11 +36,20 @@
                 ed.onInit.add(function (ed) {
                     ed.getDoc().body.style.fontSize = '14px';
                 });
+
+                ed.addButton('codebutton', {
+                    title: 'Add Code',
+                    image: '',
+                    onclick: function () {
+                        ed.focus();
+                        ed.selection.setContent('&nbsp&nbsp&nbsp&nbsp\'enter code here\'');
+                    }
+                });
             },
 
             mode: "textareas",
             theme: "advanced",
-            theme_advanced_buttons1: "mylistbox,mysplitbutton,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,numlist,undo,redo,link,unlink,fontselect,fontsizeselect",
+            theme_advanced_buttons1: "mylistbox,mysplitbutton,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,numlist,undo,redo,link,unlink,fontsizeselect,codebutton",
             theme_advanced_buttons2 : "",
             theme_advanced_buttons3 : "",
             theme_advanced_toolbar_location : "top",

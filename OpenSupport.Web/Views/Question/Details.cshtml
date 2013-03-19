@@ -1,1 +1,79 @@
-﻿
+﻿@model OpenSupport.Dashboard.ViewModels.QuestionDetailsViewModel
+<div id="PageLoader"></div>
+<div id="QuestionDetails">
+    <div id="QuestionTitle">@Model.Question.Question.Title</div>
+    <hr />
+    <div class="vote-container">
+        <div class="vote-up"><a></a></div>
+        <div class="votes">@Model.Question.Question.Votes votes</div>
+        <div class="vote-down"><a></a></div>
+    </div>
+    <div id="QuestionAndReplies">
+        @Html.TextAreaFor(x => x.Question.Question.Body)
+    
+        <div class="replies">
+            @foreach (var reply in Model.Question.Replies)
+            {
+                <div class="reply">
+                    @reply.Reply
+                </div>
+            }
+        </div>
+    </div>
+    <div id="AnswersAndReplies">
+        @foreach (var answer in Model.Answers)
+        {
+            <div class="answer">
+                @answer.Answer.Answer
+                <div class="replies">
+                    @foreach (var reply in answer.Replies)
+                    {
+                        <div class="reply">
+                            @reply.Reply
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section scripts {
+    <script type="text/javascript">
+        
+        $(function () {
+            $("#PageLoader").height($("#MainContentContainer").height() - 120);
+        });
+
+        tinyMCE.init({
+            init_instance_callback: function (inst) { inst.execCommand('mceAutoResize'); },
+            setup : function(ed)
+            {
+                ed.onInit.add(function (ed) {
+                    
+                    ed.getDoc().body.style.fontSize = '14px';
+                    EditorLoaded();
+                });
+            },
+
+            mode: "textareas",
+            theme: "advanced",
+            readonly: true,
+            height: '100%',
+            plugins : "autoresize",
+            autoresize_min_height: 0,
+
+            setupcontent_callback : "OpenSupportMCESetup"
+        });
+
+        function OpenSupportMCESetup(editor_id, body, doc) {
+            $(body).css('background', '#FFFFFF');
+        }
+
+        function EditorLoaded() {
+           $("#PageLoader").fadeOut("fast");
+        }
+
+    </script>
+}
